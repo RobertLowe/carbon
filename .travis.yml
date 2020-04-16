@@ -9,17 +9,12 @@ branches:
   - /^\d+\.x.x$/ # 1.x.x
   - /^\d+\.\d+\.x$/ # 1.1.x
 
-addons:
-   apt:
-     packages:
-       # Ubuntu 16+ does not install this dependency by default, so we need to install it ourselves
-       - libgconf-2-4
-
 stages:
   - test
   - deploy
 
 jobs:
+  fast_finish: true
   include:
     - stage: test
       name: "lint"
@@ -28,11 +23,6 @@ jobs:
         - npm run lint-ts
     - name: "unit tests"
       script: npm test
-    - name: "test storybook with cypress"
-      script: 
-        - npm start -- --ci </dev/null &>/dev/null &
-        - wait-on http://localhost:9001
-        - npm run test-cypress-build
     - stage: deploy
       name: "s3"
       script: skip
@@ -57,4 +47,3 @@ jobs:
         skip_cleanup: true
         on:
           all_branches: true # semantic-release has a regex that allows us to publish maintenance releases
-          
