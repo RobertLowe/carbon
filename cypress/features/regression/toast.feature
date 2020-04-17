@@ -2,7 +2,14 @@ Feature: Toast component
   I want to change Toast component properties
 
   Background: Open Toast component default page
-    Given I open "Toast" component page
+    Given I open design systems default-story Toast component page
+    And I check open checkbox
+
+  @positive
+  Scenario: Verify the click action in Actions Tab
+    When clear all actions in Actions Tab
+      And I click closeIcon
+    Then click action was called in Actions Tab
 
   @positive
   Scenario: CloseIcon has the border outline
@@ -12,6 +19,7 @@ Feature: Toast component
   @positive
   Scenario Outline: Change Toast variant to <variant>
     When I select variant to "<variant>"
+    And I wait 500
     Then Toast icon is set to "<icon>"
     Examples:
       | variant | icon  |
@@ -21,6 +29,7 @@ Feature: Toast component
   @positive
   Scenario Outline: Change Toast children to <children>
     When I set children to "<children>"
+    And I wait 500
     Then Toast children is set to "<children>"
     Examples:
       | children                |
@@ -52,6 +61,7 @@ Feature: Toast component
   @positive
   Scenario Outline: Verify Toast color
     When I select variant to "<variant>"
+    And I wait 500
     Then Toast has background-color "<color>" and border "<color>" color
     Examples:
       | variant | color            |

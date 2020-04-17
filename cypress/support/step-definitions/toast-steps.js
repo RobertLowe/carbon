@@ -1,14 +1,17 @@
 import { toastPreview, toastComponent } from '../../locators/toast';
 import { getDataElementByValue } from '../../locators';
 
-Then('Toast icon is set to {string}', (icon) => {
-  toastPreview().children().should('have.attr', 'type', `${icon}`)
-    .and('have.attr', 'data-element', `${icon}`)
-    .and('be.visible');
+
+Then('Toast icon is set to {string}', (val) => {
+  toastPreview().then(($el) => {
+    expect($el[0].firstElementChild.getAttribute('data-element')).to.equal(val);
+  });
 });
 
 Then('Toast children is set to {string}', (text) => {
-  toastPreview().invoke('text').should('contain', text);
+  toastComponent().then(($el) => {
+    expect($el[0].children[1].textContent).to.equal(text);
+  });
 });
 
 Then('Toast component is visible', () => {
@@ -16,7 +19,7 @@ Then('Toast component is visible', () => {
 });
 
 Then('Toast component is not visible', () => {
-  toastPreview().should('not.exist');
+  toastComponent().should('not.exist');
 });
 
 Then('Toast component has a close icon', () => {
@@ -28,9 +31,8 @@ Then('Toast component has no close icon', () => {
 });
 
 Then('Toast has background-color {string} and border {string} color', (color) => {
-  toastPreview().should('have.css', 'background-color', color);
-  toastComponent().should('have.css', 'border-bottom-color', color)
-    .and('have.css', 'border-left-color', color)
-    .and('have.css', 'border-right-color', color)
-    .and('have.css', 'border-top-color', color);
+  toastComponent().then(($el) => {
+    expect(window.getComputedStyle($el[0].children[0]).getPropertyValue('background-color')).to.equal(color);
+    expect(window.getComputedStyle($el[0]).getPropertyValue('border-color')).to.equal(color);
+  });
 });

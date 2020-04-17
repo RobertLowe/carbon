@@ -1,0 +1,114 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import styled from 'styled-components';
+import Toast from '.';
+import { useState, useEffect } from 'react';
+import { select, text, boolean } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import OptionsHelper from '../../utils/helpers/options-helper/options-helper';
+import Button from '../button';
+
+<Meta title="Design System/Toast" />
+
+# Toast
+
+```javascript
+import Toast from 'carbon-react/lib/components/toast';
+```
+### Grouped (stacking):
+
+<Preview>
+  <Story name="stacked" parameters={{ info: { disable: true }}} >
+  {() => {
+    const variant = select('variant', OptionsHelper.toast, OptionsHelper.toast[0]);
+    const variantB = select('variant', OptionsHelper.toast, OptionsHelper.toast[1]);
+    const children = text('children', 'My message');
+    const id = text('id', 'default-toast');
+    const idB = text('id', 'default-toast-b');
+    const onDismiss = boolean('onDismiss', true);
+    const isCenter = boolean('isCenter', true);
+    const onDismissClick = onDismiss ? (evt) => { action('click')(evt); } : undefined;
+    const open = boolean('open', false);
+    const [isOpen, setIsOpen] = useState();
+    const handleToggle = () => {
+      setIsOpen(!isOpen);
+      action('open')(!isOpen);
+    };
+    const StyledButton = styled(Button)`
+      position: relative;
+      display: block;
+      z-index: 9999;
+    `;
+    return (
+      <div>
+        <StyledButton key='button' onClick={ handleToggle }>Toggle Preview</StyledButton>
+        <Toast
+          variant={ variant }
+          id={ id }
+          open={ isOpen ? isOpen : open }
+          onDismiss={ onDismissClick }
+          isCenter={ isCenter }
+          targetPortalId='abc'
+        >
+          {children}
+        </Toast>
+        <Toast
+          variant={ variantB }
+          id={ idB }
+          open={ isOpen ? isOpen : open }
+          onDismiss={ onDismissClick }
+          isCenter={ isCenter }
+          targetPortalId='abc'
+        >
+          {children}
+        </Toast>
+      </div>
+    )
+  }}
+  </Story>
+</Preview>
+
+### Basic usage:
+
+<Preview>
+  <Story name="default" parameters={{ info: { disable: true }}} >
+  {() => {
+    const children = text('children', 'My message');
+    const variant = select('variant', OptionsHelper.toast, OptionsHelper.toast[0]);
+    const id = text('id', 'default-toast');
+    const onDismiss = boolean('onDismiss', true);
+    const isCenter = boolean('isCenter', true);
+    const onDismissClick = onDismiss ? (evt) => { action('click')(evt); } : undefined;
+    const open = boolean('open', false);
+    const [isOpen, setIsOpen] = useState();
+    const handleToggle = () => {
+      setIsOpen(!isOpen);
+      action('open')(!isOpen);
+    };
+    const StyledButton = styled(Button)`
+      position: relative;
+      display: block;
+      z-index: 9999;
+    `;
+    return (
+      <div>
+        <StyledButton key='button' onClick={ handleToggle }>Toggle Preview</StyledButton>
+        <Toast
+          variant={ variant }
+          id={ id }
+          open={ isOpen ? isOpen : open }
+          onDismiss={ onDismissClick }
+          isCenter={ isCenter }
+        >
+          {children}
+        </Toast>
+      </div>
+    )
+  }}
+  </Story>
+</Preview>
+
+## Props:
+
+### Toast
+
+<Props of={Toast} />

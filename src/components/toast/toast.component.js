@@ -4,9 +4,12 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import Icon from '../icon';
 import tagComponent from '../../utils/helpers/tags/tags';
-import Portal from '../portal/portal';
 import {
-  ToastStyle, ToastTypeStyle, ToastContentStyle, ToastWrapper
+  ToastStyle,
+  TypeIcon,
+  ToastContentStyle,
+  ToastWrapper,
+  StyledPortal
 } from './toast.style';
 import OptionsHelper from '../../utils/helpers/options-helper';
 import IconButton from '../icon-button';
@@ -50,9 +53,9 @@ class Toast extends React.Component {
             className={ this.componentClasses }
             { ...tagComponent((this.props['data-component'] || 'toast'), this.props) }
           >
-            <ToastTypeStyle variant={ this.props.variant || this.props.as }>
+            <TypeIcon variant={ this.props.variant || this.props.as }>
               <Icon type={ this.props.variant || this.props.as } />
-            </ToastTypeStyle>
+            </TypeIcon>
             <ToastContentStyle
               variant={ this.props.variant || this.props.as }
               isDismiss={ this.props.onDismiss }
@@ -69,13 +72,13 @@ class Toast extends React.Component {
 
   render() {
     return (
-      <Portal>
+      <StyledPortal id={ this.props.targetPortalId } isCenter={ this.props.isCenter }>
         <ToastWrapper isCenter={ this.props.isCenter }>
           <TransitionGroup>
             { this.toastContent() }
           </TransitionGroup>
         </ToastWrapper>
-      </Portal>
+      </StyledPortal>
     );
   }
 }
@@ -98,7 +101,9 @@ Toast.propTypes = {
   /** Callback for when dismissed. */
   onDismiss: PropTypes.func,
   /** props used with flash component. Allow to center a component */
-  isCenter: PropTypes.bool
+  isCenter: PropTypes.bool,
+  /** Target Portal ID where the toast will render */
+  targetPortalId: PropTypes.string
 };
 
 Toast.defaultProps = {
