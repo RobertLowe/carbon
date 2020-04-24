@@ -10,14 +10,14 @@ import classic from '../../style/themes/classic';
 import { noThemeSnapshot } from '../../__spec_helper__/enzyme-snapshot-helper';
 
 import {
-  ActionPopover, ActionPopoverDivider, ActionPopoverItem, ActionPopoverMenu
+  ActionPopover, ActionPopoverDivider, ActionPopoverItem, ActionPopoverMenu, ActionPopoverMenuButton
 } from './index';
 import {
   MenuButton, MenuItemFactory, Menu, SubMenuItemIcon
 } from './action-popover.style';
 import { rootTagTest } from '../../utils/helpers/tags/tags-specs';
 import Icon from '../icon';
-import Button from '../button';
+import StyledButton from '../button/button.style';
 import guid from '../../utils/helpers/guid';
 
 jest.mock('../../utils/helpers/guid');
@@ -929,28 +929,36 @@ describe('ActionPopover', () => {
     it('supports being passed an override component to act as the menu button', () => {
       const popover = enzymeMount(
         <ThemeProvider theme={ mintTheme }>
-          <ActionPopover renderButton={ props => <Button { ...props }>Foo</Button> }>
+          <ActionPopover renderButton={ props => (
+            <ActionPopoverMenuButton
+              buttonType='tertiary'
+              iconType='dropdown'
+              iconPosition='after'
+              size='small'
+              { ...props }
+            >
+              Foo
+            </ActionPopoverMenuButton>
+          ) }
+          >
             <ActionPopoverItem onClick={ jest.fn() }>foo</ActionPopoverItem>
           </ActionPopover>
         </ThemeProvider>
       ).find(ActionPopover);
 
-      const button = popover.find(Button);
-
-      expect(popover.find(Icon).first().exists()).toBeFalsy();
-      expect(button.exists()).toBeTruthy();
-      expect(button.props().tabIndex).toEqual(-1);
-      expect(button.props()['data-element']).toEqual('action-popover-menu-button');
+      const menuButton = popover.find(ActionPopoverMenuButton);
+      expect(menuButton.exists()).toBeTruthy();
+      expect(menuButton.props().tabIndex).toEqual(-1);
+      expect(menuButton.props()['data-element']).toEqual('action-popover-menu-button');
 
       assertStyleMatch({
-        paddingLeft: '8px',
-        paddingRight: '8px',
+        padding: '0px 8px',
         width: '100%'
-      }, button);
+      }, menuButton, { modifier: `${StyledButton}` });
 
       assertStyleMatch({
         outlineWidth: '2px'
-      }, button, { modifier: '&:focus' });
+      }, menuButton, { modifier: `${StyledButton}:focus ` });
     });
   });
 });
