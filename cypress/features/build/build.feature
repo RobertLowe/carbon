@@ -85,7 +85,6 @@ Feature: Build tests
       | table                            | table                |
       | tabs                             | tabs                 |
       | tile                             | tile                 |
-      | toast                            | toast                |
       | tooltip                          | tooltip              |
 
   @build
