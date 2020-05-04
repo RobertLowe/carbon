@@ -44,7 +44,7 @@ import Toast from 'carbon-react/lib/components/toast';
         <Toast
           variant={ variant }
           id={ id }
-          open={ isOpen ? isOpen : open }
+          open={ isOpen || open }
           onDismiss={ onDismissClick }
           isCenter={ isCenter }
           targetPortalId='abc'
@@ -54,7 +54,7 @@ import Toast from 'carbon-react/lib/components/toast';
         <Toast
           variant={ variantB }
           id={ idB }
-          open={ isOpen ? isOpen : open }
+          open={ isOpen || open }
           onDismiss={ onDismissClick }
           isCenter={ isCenter }
           targetPortalId='abc'
@@ -95,7 +95,7 @@ import Toast from 'carbon-react/lib/components/toast';
         <Toast
           variant={ variant }
           id={ id }
-          open={ isOpen ? isOpen : open }
+          open={ isOpen || open }
           onDismiss={ onDismissClick }
           isCenter={ isCenter }
         >
