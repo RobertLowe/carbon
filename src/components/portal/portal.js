@@ -58,7 +58,6 @@ class Portal extends React.Component {
       Browser.getWindow().removeEventListener('resize', this.props.onReposition);
       if (this.scrollParent) { this.scrollParent.removeEventListener('scroll', this.props.onReposition); }
     }
-    this.defaultNode.remove();
     this.defaultNode = null;
     this.scrollParent = null;
   }
