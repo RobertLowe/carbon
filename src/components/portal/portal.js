@@ -58,6 +58,7 @@ class Portal extends React.Component {
       Browser.getWindow().removeEventListener('resize', this.props.onReposition);
       if (this.scrollParent) { this.scrollParent.removeEventListener('scroll', this.props.onReposition); }
     }
+    this.defaultNode.remove();
     this.defaultNode = null;
     this.scrollParent = null;
   }
@@ -78,7 +79,7 @@ class Portal extends React.Component {
       this.defaultNode = Browser.getDocument().getElementById(this.props.id);
     }
 
-    if (!this.defaultNode) {
+    if (!this.defaultNode || (this.props.id !== undefined && !Browser.getDocument().getElementById(this.props.id))) {
       this.defaultNode = Browser.getDocument().createElement('div');
       this.defaultNode.classList.add(portalClassName);
       this.defaultNode.setAttribute('data-portal-exit', this.guid);
