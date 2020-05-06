@@ -10,7 +10,7 @@ import StyledSelectList from './select-list.style';
 import Events from '../../../utils/helpers/events/events';
 import updateListScrollTop from './update-list-scroll';
 import filterChildren from '../../../utils/filter-children';
-import StyledOption from '../select-option/select-option.style';
+import StyledOption from '../option/option.style';
 import highlightPartOfText from './highlight-part-of-text';
 
 const SelectList = ({

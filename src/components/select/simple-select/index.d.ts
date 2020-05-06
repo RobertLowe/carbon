@@ -1,16 +1,17 @@
 import * as React from 'react';
+import Option from '../option';
 
 export interface SimpleSelectProps {
   /** The selected value(s), when the component is operating in controlled mode */
   value: string | object;
   /** The default selected value(s), when the component is operating in uncontrolled mode */
   defaultValue: string | object;
-  /** ID attribute of the component */
+  /** Id attribute of the input element */
   id: string;
-  /** Name attribute of the component */
+  /** Name attribute of the input element */
   name: string;
   /** Child components (such as Option) for the SelectList */
-  children: React.FunctionComponent[] | React.ComponentClass[];
+  children: typeof Option[];
   /** If true the Component will be read-only */
   readOnly?: boolean;
   /** If true the Component will be disabled? */

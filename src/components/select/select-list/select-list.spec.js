@@ -3,7 +3,7 @@ import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import SelectList from './select-list.component';
 import { baseTheme } from '../../../style/themes';
-import Option from '../select-option';
+import Option from '../option';
 
 describe('Option', () => {
   describe('when a key is pressed', () => {

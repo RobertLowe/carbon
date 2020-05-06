@@ -227,9 +227,9 @@ SimpleSelect.propTypes = {
   value: valuePropType,
   /** The default selected value(s), when the component is operating in uncontrolled mode */
   defaultValue: valuePropType,
-  /** ID attribute of the component */
+  /** Id attribute of the input element */
   id: PropTypes.string,
-  /** Name attribute of the component */
+  /** Name attribute of the input element */
   name: PropTypes.string,
   /** Child components (such as Option) for the SelectList */
   children: PropTypes.node,

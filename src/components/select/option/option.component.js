@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import StyledOption from './select-option.style';
+import StyledOption from './option.style';
 
 const Option = ({
   text,
@@ -22,7 +22,7 @@ const Option = ({
   return (
     <StyledOption
       aria-selected={ isHighlighted }
-      data-component='select-option'
+      data-component='option'
       onClick={ handleClick }
       isHighlighted={ isHighlighted }
       role='option'

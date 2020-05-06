@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import { assertStyleMatch } from '../../../__spec_helper__/test-utils';
 import SimpleSelect from './simple-select.component';
 import Textbox from '../../../__experimental__/components/textbox';
-import Option from '../select-option';
+import Option from '../option';
 import SelectList from '../select-list';
 import InputIconToggleStyle from '../../../__experimental__/components/input-icon-toggle/input-icon-toggle.style';
 import StyledInput from '../../../__experimental__/components/input/input.style';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface SimpleSelectProps {
+export interface OptionProps {
   /** The option's visible text, displayed within <Textbox> of <Select>, and used for filtering */
   text: string;
   /** Optional: alternative rendered content, displayed within <SelectList> of <Select> (eg: an icon, an image, etc) */
@@ -11,6 +11,6 @@ export interface SimpleSelectProps {
   onSelectOption: () => void;
 }
 
-declare const SimpleSelect: React.ComponentType<SimpleSelectProps>;
+declare const Option: React.ComponentType<OptionProps>;
 
-export default SimpleSelect;
+export default Option;
