@@ -13,7 +13,7 @@ exports[`Option renders properly 1`] = `
 }
 
 .c0:hover {
-  background-color: #F2F4F5;
+  background-color: #F2F5F6;
 }
 
 <li
@@ -36,11 +36,11 @@ exports[`Option when no children are provided renders with the text prop as chil
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background-color: #F2F4F5;
+  background-color: #F2F5F6;
 }
 
 .c0:hover {
-  background-color: #F2F4F5;
+  background-color: #F2F5F6;
 }
 
 <li
