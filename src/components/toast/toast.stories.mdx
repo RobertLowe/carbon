@@ -26,12 +26,21 @@ import Toast from 'carbon-react/lib/components/toast';
     const idB = text('id', 'default-toast-b');
     const onDismiss = boolean('onDismiss', true);
     const isCenter = boolean('isCenter', true);
-    const onDismissClick = onDismiss ? (evt) => { action('click')(evt); } : undefined;
+    const onDismissClickA = onDismiss ? (evt) => {
+      setIsOpenA(!isOpenA);
+      action('click')(evt);
+    } : undefined;
+    const onDismissClickB = onDismiss ? (evt) => {
+      setIsOpenB(!isOpenB);
+      action('click')(evt);
+    } : undefined;
     const open = boolean('open', false);
-    const [isOpen, setIsOpen] = useState();
+    const [isOpenA, setIsOpenA] = useState();
+    const [isOpenB, setIsOpenB] = useState();
     const handleToggle = () => {
-      setIsOpen(!isOpen);
-      action('open')(!isOpen);
+      setIsOpenA(!isOpenA);
+      setIsOpenB(!isOpenB);
+      action('open')(!isOpenA);
     };
     const StyledButton = styled(Button)`
       position: relative;
@@ -44,8 +53,8 @@ import Toast from 'carbon-react/lib/components/toast';
         <Toast
           variant={ variant }
           id={ id }
-          open={ isOpen || open }
-          onDismiss={ onDismissClick }
+          open={ isOpenA || open }
+          onDismiss={ onDismissClickA }
           isCenter={ isCenter }
           targetPortalId='abc'
         >
@@ -54,8 +63,8 @@ import Toast from 'carbon-react/lib/components/toast';
         <Toast
           variant={ variantB }
           id={ idB }
-          open={ isOpen || open }
-          onDismiss={ onDismissClick }
+          open={ isOpenB || open }
+          onDismiss={ onDismissClickB }
           isCenter={ isCenter }
           targetPortalId='abc'
         >
@@ -77,7 +86,10 @@ import Toast from 'carbon-react/lib/components/toast';
     const id = text('id', 'default-toast');
     const onDismiss = boolean('onDismiss', true);
     const isCenter = boolean('isCenter', true);
-    const onDismissClick = onDismiss ? (evt) => { action('click')(evt); } : undefined;
+    const onDismissClick = onDismiss ? (evt) => {
+      setIsOpen(!isOpen);
+      action('click')(evt);
+    } : undefined;
     const open = boolean('open', false);
     const [isOpen, setIsOpen] = useState();
     const handleToggle = () => {
