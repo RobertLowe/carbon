@@ -163,7 +163,7 @@ describe('Toast', () => {
 });
 
 describe('ToastStyle', () => {
-  it('should render correct with style based on default theme', () => {
+  it('should render with correct style based on default theme', () => {
     assertStyleMatch({
       boxShadow: '0 10px 30px 0 rgba(0,20,29,.1),0 30px 60px 0 rgba(0,20,29,.1)',
       lineHeight: '22px',
