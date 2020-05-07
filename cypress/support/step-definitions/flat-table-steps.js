@@ -11,7 +11,7 @@ import { icon } from '../../locators';
 Then('FlatTable rows are sticky', () => {
   cy.wait(500);
   for (let i = 0; i <= 3; i++) {
-    const color = 'rgb(204, 214, 218)';
+    const color = 'rgb(204, 214, 219)';
     flatTableBodyRowByPositionDS(i).find('th').should('have.css', 'border-right-color', color)
       .and('have.css', 'border-left-color', color)
       .and('have.css', 'border-bottom-color', color)

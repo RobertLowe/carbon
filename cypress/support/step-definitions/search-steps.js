@@ -73,14 +73,4 @@ Then('search icon as button is visible', () => {
 });
 
 Then('search icon as button is not visible', () => {
-  searchDefault().find(BUTTON_DATA_COMPONENT_PREVIEW).should('not.exist');
-  searchIcon().should('not.exist');
-});
-
-When('Search component is focused', () => {
-  searchComponent().trigger('mouseover');
-});
-
-When('Search has golden bottom border', () => {
-  searchComponent().should('have.css', 'border-bottom-color', 'rgb(204, 214, 219)');
 });

@@ -87,7 +87,7 @@ Feature: Design System Duelling Picklist Component
 
   @positive
   Scenario Outline: Verify results of searching in duelling picklist
-    When Type "<search>" text into search input
+    When Type "<search>" text into duelling picklist search input
     Then unassigned picklist contains <result> items
     Examples:
       | search     | result |

@@ -80,7 +80,7 @@ When('I remove {int} item(s) from assigned picklist', () => {
   removeButton().click({ multiple: true });
 });
 
-When('Type {string} text into search input', (text) => {
+When('Type {string} text into duelling picklist search input', (text) => {
   duellingSearchInput().clear().type(text);
 });
 
