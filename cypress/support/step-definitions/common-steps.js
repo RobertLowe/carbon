@@ -1,6 +1,7 @@
 import {
   visitComponentUrl, setSlidebar, pressESCKey, pressTABKey, asyncWaitForKnobs,
-  visitFlatTableComponentNoiFrame, positionOfElement, keyCode, visitDocsUrl,
+  visitFlatTableComponentNoiFrame, positionOfElement, keyCode,
+  visitDocsUrl,
 } from '../helper';
 import {
   commonButtonPreview, labelPreview, helpIcon, helpIconByPosition, inputWidthSlider,

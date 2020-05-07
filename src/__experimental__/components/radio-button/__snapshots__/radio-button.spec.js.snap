@@ -145,7 +145,7 @@ exports[`RadioButton styles base renders as expected 1`] = `
 }
 
 .c18 .c11:checked ~ .c13 svg path {
-  fill: #CCD6DA;
+  fill: #CCD6DB;
 }
 
 .c18 .c13:hover,
@@ -180,7 +180,7 @@ exports[`RadioButton styles base renders as expected 1`] = `
 }
 
 .c18 .c11:checked + .c13 circle {
-  fill: #CCD6DA;
+  fill: #CCD6DB;
 }
 
 .c19 .c9 {
@@ -857,7 +857,7 @@ exports[`RadioButton styles base renders as expected 1`] = `
 
 .c3 svg {
   background-color: #FFFFFF;
-  border: 1px solid #668491;
+  border: 1px solid #668592;
 }
 
 .c3 .c11,
@@ -884,9 +884,9 @@ exports[`RadioButton styles base renders as expected 1`] = `
 .c3 .c28 {
   padding-left: 6px;
   width: auto;
-  -webkit-flex: 1 1 calc(100% - 28px);
-  -ms-flex: 1 1 calc(100% - 28px);
-  flex: 1 1 calc(100% - 28px);
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
 }
 
 .c3 .c25 {

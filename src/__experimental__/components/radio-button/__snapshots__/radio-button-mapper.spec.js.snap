@@ -71,7 +71,7 @@ Array [
 
 .c0 svg {
   background-color: #FFFFFF;
-  border: 1px solid #668491;
+  border: 1px solid #668592;
 }
 
 .c0 .c8,
@@ -98,9 +98,9 @@ Array [
 .c0 .c14 {
   padding-left: 6px;
   width: auto;
-  -webkit-flex: 1 1 calc(100% - 28px);
-  -ms-flex: 1 1 calc(100% - 28px);
-  flex: 1 1 calc(100% - 28px);
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
 }
 
 .c0 .c11 {
@@ -294,7 +294,7 @@ Array [
 
 .c0 svg {
   background-color: #FFFFFF;
-  border: 1px solid #668491;
+  border: 1px solid #668592;
 }
 
 .c0 .c8,
@@ -321,9 +321,9 @@ Array [
 .c0 .c14 {
   padding-left: 6px;
   width: auto;
-  -webkit-flex: 1 1 calc(100% - 28px);
-  -ms-flex: 1 1 calc(100% - 28px);
-  flex: 1 1 calc(100% - 28px);
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
 }
 
 .c0 .c11 {

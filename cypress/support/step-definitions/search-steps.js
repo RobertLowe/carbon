@@ -63,7 +63,7 @@ Then('search icon has golden border', () => {
 });
 
 Then('search icon has proper inner color', () => {
-  const mintColor = 'rgb(0, 128, 93)';
+  const mintColor = 'rgb(0, 129, 93)';
   searchIcon().should('have.css', 'background-color', mintColor)
     .and('have.css', 'border-color', mintColor);
 });
@@ -74,4 +74,13 @@ Then('search icon as button is visible', () => {
 
 Then('search icon as button is not visible', () => {
   searchDefault().find(BUTTON_DATA_COMPONENT_PREVIEW).should('not.exist');
+  searchIcon().should('not.exist');
+});
+
+When('Search component is focused', () => {
+  searchComponent().trigger('mouseover');
+});
+
+When('Search has golden bottom border', () => {
+  searchComponent().should('have.css', 'border-bottom-color', 'rgb(204, 214, 219)');
 });

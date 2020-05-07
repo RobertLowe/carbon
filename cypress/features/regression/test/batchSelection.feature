@@ -49,5 +49,15 @@ Feature: Batch selection component
       | colorTheme        | color              |
       | dark              | rgb(0, 51, 73)     |
       | transparent-white | rgba(0, 0, 0, 0)   |
-      | light             | rgb(178, 193, 200) |
+      | light             | rgb(179, 194, 200) |
       | transparent-base  | rgba(0, 0, 0, 0)   |
+
+  @positive
+  Scenario Outline: I focus inner element for Batch selection component
+    When I focus Batch selection <buttonIndex> button
+    Then Batch selection component <buttonIndex> button is focused
+    Examples:
+      | buttonIndex |
+      | 0           |
+      | 1           |
+      | 2           |
