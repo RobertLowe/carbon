@@ -7,16 +7,19 @@ Feature: Design Systems FlatTable component
   @positive
   Scenario: FlatTable has sticky row
     # commented because of BDD default scenario Given - When - Then
+    # When I open Design Systems basic "Flat Table" component docs page
     Then FlatTable rows are sticky
 
   @positive
   Scenario: FlatTable has sticky header
     # commented because of BDD default scenario Given - When - Then
+    # When I open Design Systems basic "Flat Table" component docs page
     Then FlatTable has sticky header
 
   @positive
   Scenario: Verify outline color
     # commented because of BDD default scenario Given - When - Then
+    # When I open Design Systems basic "Flat Table" component docs page
     Then I focus 2 row and focused row element has golden border on focus
 
   @positive

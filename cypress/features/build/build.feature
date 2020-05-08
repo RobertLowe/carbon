@@ -3,11 +3,11 @@ Feature: Build tests
 
   @build
   Scenario Outline: Component <component> without activation button
-    When I open design systems <component> <story> component in iframe
+    When I open design systems default_story "<component>" component in no iframe
     Then "<data-component>" component is visible
     Examples:
-      | component                   | story          | data-component |
-      | design-system-inline-inputs | default-story | inline-inputs  |
+      | component     | data-component |
+      | inline-inputs | inline-inputs  |
 
   @build
   Scenario Outline: Component <component> page with button

@@ -6,7 +6,6 @@ import { helpIcon, link } from '../../locators';
 const DIVIDER = 'carbon-heading--has-divider';
 
 Then('heading children on preview is {string}', (children) => {
-  cy.wait(500);
   headingPreview().should('contain', children);
 });
 
