@@ -16,10 +16,10 @@ import highlightPartOfText from './highlight-part-of-text';
 const SelectList = ({
   id,
   children,
-  onSelectOption,
+  onSelect,
   onSelectListClose,
   filterText,
-  hasTypeToSearch
+  hasFilter
 }) => {
   const list = useRef();
   const [currentOptionsListIndex, setCurrentOptionsListIndex] = useState(-1);
@@ -39,7 +39,7 @@ const SelectList = ({
 
       const { text, value } = optionsList[currentOptionsListIndex].props;
 
-      onSelectOption({ text, value });
+      onSelect({ text, value });
     } else if (Events.isDownKey(event)) {
       if (currentOptionsListIndex === lastIndex || isNoOptionSelected) {
         newIndex = 0;
@@ -50,16 +50,16 @@ const SelectList = ({
       setCurrentOptionsListIndex(newIndex);
       updateListScrollTop(newIndex, list.current);
     } else if (Events.isUpKey(event)) {
+      newIndex = currentOptionsListIndex - 1;
+
       if (currentOptionsListIndex === 0 || isNoOptionSelected) {
         newIndex = lastIndex;
-      } else {
-        newIndex = currentOptionsListIndex - 1;
       }
 
       setCurrentOptionsListIndex(newIndex);
       updateListScrollTop(newIndex, list.current);
     }
-  }, [currentOptionsListIndex, children, onSelectListClose, onSelectOption]);
+  }, [currentOptionsListIndex, children, onSelectListClose, onSelect]);
 
   useEffect(() => {
     const keyboardEvent = 'keydown';
@@ -87,7 +87,7 @@ const SelectList = ({
   function getFilteredChildren() {
     let filteredElements = children;
 
-    if (hasTypeToSearch && filterText.length > 2) {
+    if (hasFilter && filterText.length > 2) {
       filteredElements = filterChildren({ value: filterText })(children);
     }
 
@@ -105,12 +105,12 @@ const SelectList = ({
   function getChildrenWithListProps(filteredElements) {
     return React.Children.map(filteredElements, (child, index) => {
       const newProps = {
-        onSelectOption,
+        onSelect,
         index,
         selectedIndex: currentOptionsListIndex
       };
 
-      if (hasTypeToSearch && filterText.length > 2) {
+      if (hasFilter && filterText.length > 2) {
         newProps.children = highlightPartOfText(child.props.text, filterText);
       }
 
@@ -141,13 +141,13 @@ SelectList.propTypes = {
   /** Child components (such as <Option>) for the <ScrollableList> */
   children: PropTypes.node,
   /** A callback for when a child is selected */
-  onSelectOption: PropTypes.func,
+  onSelect: PropTypes.func.isRequired,
   /** A callback for when the list should be closed */
   onSelectListClose: PropTypes.func,
   /** Text value to highlight an option */
   filterText: PropTypes.string,
   /** If true the Component has type to search functionality */
-  hasTypeToSearch: PropTypes.bool
+  hasFilter: PropTypes.bool
 };
 
 export default SelectList;

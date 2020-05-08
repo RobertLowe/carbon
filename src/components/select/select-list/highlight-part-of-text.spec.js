@@ -5,7 +5,7 @@ import MatchingText from './matching-text.style';
 
 describe('highlightPartOfText', () => {
   describe('when the text contains no matching parts', () => {
-    it('then the returned text should be not changed', () => {
+    it('then the returned text should not be changed', () => {
       const text = 'abcdefghi';
       const partToBeHighlighted = 'xyz';
 
@@ -14,7 +14,7 @@ describe('highlightPartOfText', () => {
   });
 
   describe('when the partToBeHighlighted is an empty string', () => {
-    it('then the returned text should be not changed', () => {
+    it('then the returned text should not be changed', () => {
       const text = 'abcdefghi';
       const partToBeHighlighted = '';
 
@@ -23,7 +23,7 @@ describe('highlightPartOfText', () => {
   });
 
   describe('when the text contains matching part', () => {
-    it('the proper part of text should be highlighted', () => {
+    it('the expected part of text should be highlighted', () => {
       const text = 'abcdefghi';
       const partToBeHighlighted = 'def';
 

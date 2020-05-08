@@ -7,7 +7,7 @@ import { baseTheme } from '../../../style/themes';
 const StyledSimpleSelect = styled.div`
   position: relative;
 
-  ${({ hasTypeToSearch }) => !hasTypeToSearch && css`
+  ${({ hasFilter }) => !hasFilter && css`
     ${StyledInput} {
       cursor: default;
       color: transparent;

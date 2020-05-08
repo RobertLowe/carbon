@@ -5,6 +5,7 @@ import React, {
   useCallback
 } from 'react';
 import PropTypes from 'prop-types';
+import invariant from 'invariant';
 import Textbox from '../../../__experimental__/components/textbox';
 import StyledSimpleSelect from './simple-select.style';
 import SelectList from '../select-list';
@@ -22,7 +23,7 @@ const SimpleSelect = ({
   children,
   size,
   transparent,
-  hasTypeToSearch,
+  hasFilter,
   opensOnFocus,
   assignInputRef,
   onOpen,
@@ -33,6 +34,7 @@ const SimpleSelect = ({
   const selectListId = guid();
   const containerRef = useRef();
   const filterTimer = useRef();
+  const isControlled = useRef(value !== undefined);
   const isTimerCounting = useRef();
   const [isOpen, setOpenState] = useState(false);
   const [textValue, setTextValue] = useState('');
@@ -60,7 +62,7 @@ const SimpleSelect = ({
       onChange(event.target.value);
     }
 
-    if (hasTypeToSearch) {
+    if (hasFilter) {
       setTextValue(event.target.value);
       setFilterValue(event.target.value);
 
@@ -81,7 +83,7 @@ const SimpleSelect = ({
     filterTimer.current = setTimeout(() => {
       isTimerCounting.current = false;
     }, 500);
-  }, [hasTypeToSearch, onChange]);
+  }, [onChange, hasFilter]);
 
   const handleTextboxKeydown = useCallback(((event) => {
     if (Events.isEnterKey(event) || Events.isDownKey(event) || Events.isUpKey(event)) {
@@ -99,6 +101,9 @@ const SimpleSelect = ({
 
   useEffect(() => {
     const newValue = value || defaultValue;
+    const message = 'Input elements should not switch from uncontrolled to controlled (or vice versa). '
+    + 'Decide between using a controlled or uncontrolled input element for the lifetime of the component';
+    invariant(isControlled.current === (value !== undefined), message);
 
     setSelectedValue(newValue);
     setMatchingText(newValue);
@@ -150,7 +155,7 @@ const SimpleSelect = ({
     }
   }
 
-  function onSelectOption(optionData) {
+  function onSelect(optionData) {
     setOpen(false);
     setSelectedValue(optionData.value);
     setTextValue(optionData.text);
@@ -188,7 +193,7 @@ const SimpleSelect = ({
   return (
     <StyledSimpleSelect
       transparent={ transparent }
-      hasTypeToSearch={ hasTypeToSearch }
+      hasFilter={ hasFilter }
       ref={ containerRef }
     >
       <Textbox
@@ -201,10 +206,10 @@ const SimpleSelect = ({
       { isOpen && (
         <SelectList
           id={ selectListId }
-          onSelectOption={ onSelectOption }
+          onSelect={ onSelect }
           onSelectListClose={ onSelectListClose }
           filterText={ filterValue }
-          hasTypeToSearch={ hasTypeToSearch }
+          hasFilter={ hasFilter }
         >
           { children }
         </SelectList>
@@ -232,7 +237,7 @@ SimpleSelect.propTypes = {
   /** Name attribute of the input element */
   name: PropTypes.string,
   /** Child components (such as Option) for the SelectList */
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   /** If true the Component will be read-only */
   readOnly: PropTypes.bool,
   /** If true the Component will be disabled? */
@@ -254,7 +259,7 @@ SimpleSelect.propTypes = {
   /** Callback function for when the Select Textbox is focused. */
   onFocus: PropTypes.func,
   /** If true the Component has type to search functionality */
-  hasTypeToSearch: PropTypes.bool
+  hasFilter: PropTypes.bool
 };
 
 export default SimpleSelect;

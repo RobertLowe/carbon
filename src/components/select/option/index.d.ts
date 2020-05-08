@@ -7,8 +7,6 @@ export interface OptionProps {
   children?: React.FunctionComponent | React.ComponentClass;
   /** The option's invisible internal value */
   value: string | object;
-  /** Callback to return value when the element is selected */
-  onSelectOption: () => void;
 }
 
 declare const Option: React.ComponentType<OptionProps>;

@@ -3,15 +3,15 @@ import Option from '../option';
 
 export interface SimpleSelectProps {
   /** The selected value(s), when the component is operating in controlled mode */
-  value: string | object;
+  value?: string | object;
   /** The default selected value(s), when the component is operating in uncontrolled mode */
-  defaultValue: string | object;
+  defaultValue?: string | object;
   /** Id attribute of the input element */
-  id: string;
+  id?: string;
   /** Name attribute of the input element */
-  name: string;
+  name?: string;
   /** Child components (such as Option) for the SelectList */
-  children: typeof Option[];
+  children: Array<typeof Option>;
   /** If true the Component will be read-only */
   readOnly?: boolean;
   /** If true the Component will be disabled? */
@@ -19,11 +19,11 @@ export interface SimpleSelectProps {
   /** If true, focus opens the menu */
   opensOnFocus?: boolean;
   /** Size of an input */
-  size: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   /** If true the component input has no border and is transparent */
   transparent?: boolean;
   /** If true the Component has type to search functionality */
-  hasTypeToSearch?: boolean;
+  hasFilter?: boolean;
   /** A callback to retrieve the input reference */
   assignInputRef?: () => React.RefObject<HTMLInputElement>;
   /** A custom callback for when the dropdown menu opens */

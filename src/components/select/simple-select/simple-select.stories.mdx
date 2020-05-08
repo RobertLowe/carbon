@@ -16,7 +16,7 @@ Simple Select is a Carbon styled equivalent of HTML Select Element with optional
 
 Always insert `Option` Components inside the `SimpleSelect`, analogous to the original `<select>` and `<option>` HTML Elements.
 
-To enable Type To Search functionality you have to add `hasTypeToSearch` prop.
+To enable Type To Search functionality you have to add `hasFilter` prop.
 It will allow you to filter through the existing options leaving only these that matches the typed in text.
 
 ## Quick Start 
@@ -139,7 +139,7 @@ from `carbon-react/lib/components/select`.
 <Preview>
   <Story name="typetosearch" parameters={{ info: { disable: true }}} >
     <div style={{ height: '250px' }}>
-      <SimpleSelect name='typetosearch' id='typetosearch' defaultValue='4' hasTypeToSearch>
+      <SimpleSelect name='typetosearch' id='typetosearch' defaultValue='4' hasFilter>
         <Option text='Amber' value='1' />
         <Option text='Black' value='2' />
         <Option text='Blue' value='3' />

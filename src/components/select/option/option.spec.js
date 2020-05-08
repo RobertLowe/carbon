@@ -18,14 +18,14 @@ describe('Option', () => {
   });
 
   describe('when isHighlighted prop is set', () => {
-    it('then it should have proper background', () => {
+    it('then it should have expected background', () => {
       const props = { value: '1', text: 'foo' };
       expect(renderOption(props, mount)).toHaveStyleRule('background-color', baseTheme.select.selected);
     });
   });
 
   describe('when the element is hovered over', () => {
-    it('then it should have proper background', () => {
+    it('then it should have expected background', () => {
       const props = { value: '1', text: 'foo' };
       expect(renderOption(props, mount))
         .toHaveStyleRule('background-color', baseTheme.select.selected, { modifier: ':hover' });
@@ -33,13 +33,13 @@ describe('Option', () => {
   });
 
   describe('when the element is clicked', () => {
-    it('then onSelectOption should be called with text and value', () => {
-      const onSelectOption = jest.fn();
-      const props = { value: '1', text: 'foo', onSelectOption };
+    it('then onSelect should be called with text and value', () => {
+      const onSelect = jest.fn();
+      const props = { value: '1', text: 'foo', onSelect };
       const wrapper = renderOption(props, mount);
       wrapper.simulate('click');
 
-      expect(onSelectOption).toHaveBeenCalledWith({ text: props.text, value: props.value });
+      expect(onSelect).toHaveBeenCalledWith({ text: props.text, value: props.value });
     });
   });
 });

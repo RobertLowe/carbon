@@ -16,8 +16,6 @@ const StyledSelectList = styled.ul`
   padding: 0;
   width: 100%;
   z-index: 1;
-
-  ${({ styleOverride }) => styleOverride};
 `;
 
 StyledSelectList.defaultProps = {

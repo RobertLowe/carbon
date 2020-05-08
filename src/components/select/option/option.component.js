@@ -5,7 +5,7 @@ import StyledOption from './option.style';
 const Option = ({
   text,
   children,
-  onSelectOption,
+  onSelect,
   value,
   index,
   selectedIndex
@@ -16,7 +16,7 @@ const Option = ({
   }, [index, selectedIndex]);
 
   function handleClick() {
-    onSelectOption({ text, value });
+    onSelect({ text, value });
   }
 
   return (
@@ -40,7 +40,7 @@ Option.propTypes = {
   /** The option's invisible internal value */
   value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   /** Callback to return value when the element is selected (prop added by the SelectList component) */
-  onSelectOption: PropTypes.func,
+  onSelect: PropTypes.func,
   /** Index of the option in the SelectList (prop added by the SelectList component) */
   index: PropTypes.number,
   /** Currently selected index (prop added by the SelectList component) */

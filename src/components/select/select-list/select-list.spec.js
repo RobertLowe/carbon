@@ -15,12 +15,12 @@ describe('Option', () => {
     const upKeyDownEvent = new KeyboardEvent('keydown', { which: 38, bubbles: true });
     let domNode;
     let onSelectListClose;
-    let onSelectOption;
+    let onSelect;
 
     beforeEach(() => {
       onSelectListClose = jest.fn();
-      onSelectOption = jest.fn();
-      wrapper = mount(getSelectList({ onSelectListClose, onSelectOption, filterText: '' }));
+      onSelect = jest.fn();
+      wrapper = mount(getSelectList({ onSelectListClose, onSelect, filterText: '' }));
       domNode = wrapper.getDOMNode();
       document.body.appendChild(domNode);
     });
@@ -37,17 +37,17 @@ describe('Option', () => {
 
     describe("and it's the Enter key", () => {
       describe('without an highlighted element', () => {
-        it('then the onSelectOption prop should not be called', () => {
+        it('then the onSelect prop should not be called', () => {
           domNode.dispatchEvent(enterKeyDownEvent);
-          expect(onSelectOption).not.toHaveBeenCalled();
+          expect(onSelect).not.toHaveBeenCalled();
         });
       });
 
       describe('with an highlighted element', () => {
-        it('then the onSelectOption prop should be called', () => {
+        it('then the onSelect prop should be called', () => {
           wrapper.setProps({ filterText: 'red' }).update();
           domNode.dispatchEvent(enterKeyDownEvent);
-          expect(onSelectOption).toHaveBeenCalled();
+          expect(onSelect).toHaveBeenCalled();
         });
       });
     });
@@ -95,29 +95,27 @@ describe('Option', () => {
 
   describe('when rendered', () => {
     it('then Options should have additional props', () => {
-      const onSelectOption = jest.fn();
-      const wrapper = renderSelectList({ onSelectOption });
+      const onSelect = jest.fn();
+      const wrapper = renderSelectList({ onSelect });
 
-      expect(wrapper.find(Option).first().prop('onSelectOption')).toBe(onSelectOption);
+      expect(wrapper.find(Option).first().prop('onSelect')).toBe(onSelect);
       expect(wrapper.find(Option).first().prop('index')).toBe(0);
       expect(wrapper.find(Option).first().prop('selectedIndex')).toBe(-1);
     });
   });
 
-  describe('when the hasTypeToSearch prop and filterText nas more that two characters', () => {
+  describe('when the hasFilter prop is set to true and filterText have more than two characters', () => {
     describe('and one of the options text contains the filterText', () => {
       it('then there should be only one option selected', () => {
-        const wrapper = renderSelectList({ hasTypeToSearch: true, filterText: 'gre' });
+        const wrapper = renderSelectList({ hasFilter: true, filterText: 'gre' });
 
         expect(wrapper.find(Option)).toHaveLength(1);
       });
     });
-  });
 
-  describe('when the hasTypeToSearch prop and filterText nas more that two characters', () => {
     describe('and none of the options text contains the filterText', () => {
       it('then there should be only one option selected', () => {
-        const wrapper = renderSelectList({ hasTypeToSearch: true, filterText: 'xyz' });
+        const wrapper = renderSelectList({ hasFilter: true, filterText: 'xyz' });
 
         expect(wrapper.find(SelectList).children()).toHaveLength(1);
         expect(wrapper.find(SelectList).children().at(0).text()).toBe('No results');

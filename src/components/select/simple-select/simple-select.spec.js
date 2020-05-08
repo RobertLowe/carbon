@@ -12,7 +12,7 @@ import InputPresentationStyle from '../../../__experimental__/components/input/i
 import { baseTheme } from '../../../style/themes';
 
 describe('SimpleSelect', () => {
-  describe('when the hasTypeToSearch prop is not specified', () => {
+  describe('when the hasFilter prop is not specified', () => {
     it('then the input text should have proper styling', () => {
       const wrapper = renderSelect({ transparent: true });
 
@@ -201,17 +201,17 @@ describe('SimpleSelect', () => {
       it('then that prop should be called with the same value', () => {
         const onChangeFn = jest.fn();
         const changeEventObject = { target: { value: 'Foo' } };
-        const wrapper = renderSelect({ onChange: onChangeFn, hasTypeToSearch: true });
+        const wrapper = renderSelect({ onChange: onChangeFn, hasFilter: true });
 
         wrapper.find('input').simulate('change', changeEventObject);
         expect(onChangeFn).toHaveBeenCalledWith(changeEventObject.target.value);
       });
     });
 
-    describe('with hasTypeToSearch prop set to true', () => {
+    describe('with hasFilter prop set to true', () => {
       it('the SelectList should have the filterText prop the same as the value', () => {
         const changeEventObject = { target: { value: 'Foo' } };
-        const wrapper = renderSelect({ hasTypeToSearch: true });
+        const wrapper = renderSelect({ hasFilter: true });
 
         wrapper.find('input').simulate('focus');
         wrapper.find('input').simulate('change', changeEventObject);
@@ -220,7 +220,7 @@ describe('SimpleSelect', () => {
     });
   });
 
-  describe('when the onSelectOption is called in the SelectList', () => {
+  describe('when the onSelect is called in the SelectList', () => {
     const mockOptionObject = {
       value: 'Foo',
       text: 'Bar'
@@ -232,7 +232,7 @@ describe('SimpleSelect', () => {
       wrapper.find('input').simulate('focus');
       expect(wrapper.find(SelectList).exists()).toBe(true);
       act(() => {
-        wrapper.find(SelectList).prop('onSelectOption')(mockOptionObject);
+        wrapper.find(SelectList).prop('onSelect')(mockOptionObject);
       });
       expect(wrapper.update().find(SelectList).exists()).toBe(false);
     });
@@ -244,7 +244,7 @@ describe('SimpleSelect', () => {
 
         wrapper.find('input').simulate('focus');
         act(() => {
-          wrapper.find(SelectList).prop('onSelectOption')(mockOptionObject);
+          wrapper.find(SelectList).prop('onSelect')(mockOptionObject);
         });
         expect(onChangeFn).toHaveBeenCalledWith(mockOptionObject.value);
       });
@@ -267,7 +267,7 @@ describe('SimpleSelect', () => {
       it('then the formattedValue prop in Textbox should be reverted to previous value', () => {
         const selectedOptionTextValue = 'green';
         const onChangeFn = jest.fn();
-        const wrapper = renderSelect({ onChange: onChangeFn, defaultValue: 'opt2', hasTypeToSearch: true });
+        const wrapper = renderSelect({ onChange: onChangeFn, defaultValue: 'opt2', hasFilter: true });
         const changeEventObject = { target: { value: 'Foo' } };
 
         wrapper.find('input').simulate('focus');
