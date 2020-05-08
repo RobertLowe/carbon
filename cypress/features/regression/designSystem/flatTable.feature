@@ -1,22 +1,25 @@
 Feature: Design Systems FlatTable component
-  I want to test Design Systems FlatTable component properties
+  I want to test Design Systems FlatTable component
 
   Background: Open Design Systems FlatTable component page
     Given I open Design Systems basic "Flat Table" component docs page
 
   @positive
   Scenario: FlatTable has sticky row
+    # commented because of BDD default scenario Given - When - Then
     Then FlatTable rows are sticky
 
   @positive
   Scenario: FlatTable has sticky header
+    # commented because of BDD default scenario Given - When - Then
     Then FlatTable has sticky header
 
   @positive
-  Scenario: Verify outline color 
+  Scenario: Verify outline color
+    # commented because of BDD default scenario Given - When - Then
     Then I focus 2 row and focused row element has golden border on focus
 
-    @positive
+  @positive
   Scenario Outline: Sort <headerName> flat table column descending
     When I click on "<position>" header 1 times
     Then "<position>" column is sorted in "desc" order

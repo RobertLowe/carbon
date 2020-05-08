@@ -1,8 +1,8 @@
 Feature: Design System Numeral Date component
-  I want to test Design System Numeral Date component properties
+  I want to test Design System Numeral Date component
 
   Background: Open Design System Numeral Date component page
-    Given I open default Design System "Numeral Date" component docs page
+    Given I open Design Systems default_story "Numeral Date" component docs page
 
   @positive
   Scenario: Verify that Numeral Date input doesn't allow type numeral character in inputs

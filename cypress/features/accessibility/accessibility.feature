@@ -111,17 +111,50 @@ Feature: Accessibility tests
     When I open Accessibility Tab
     Then "<component>" component has no violations in Accessibility section
     Examples:
-      | component           | data-component      |
-      | Accordion           | accordion           |
-      | Anchornavigation    | anchor-navigation   |
-      | Badge               | badge               |
-      | Batch Selection     | batch-selection     |
-      | Button Toggle Group | button-toggle-group |
-      | duellingpicklist    | duelling-picklist   |
-      | Draggable           | draggable           |
-      | Flat Table          | flat-table          |
-      | Grid                | grid                |
-      | Numeral Date        | numeral-date        |
-      | Search              | search              |
-      | Pager               | pager               |
-      | Popover Container   | popover-container   |
+      | component        |
+      | Anchornavigation |
+      | duellingpicklist |
+
+  @accessibility
+  Scenario Outline: Design System <component> component basic page
+    Given I open design systems basic "<component>" component page
+    When I open Accessibility Tab
+    Then "<component>" component has no violations in Accessibility section
+    Examples:
+      | component         |
+      | Badge             |
+      | Batch Selection   |
+      | Draggable         |
+      | Flat Table        |
+      | Grid              |
+      | Popover Container |
+
+  @accessibility
+  Scenario Outline: Design System <component> component primary page
+    Given I open design systems primary "<component>" component page
+    When I open Accessibility Tab
+    Then "<component>" component has no violations in Accessibility section
+    Examples:
+      | component |
+      | Accordion |
+
+  @accessibility
+  Scenario Outline: Design System <component> component default story page
+    Given I open design systems default_story "<component>" component page
+    When I open Accessibility Tab
+    Then "<component>" component has no violations in Accessibility section
+    Examples:
+      | component             |
+      | Advanced Color Picker |
+      | Numeral Date          |
+      | Pager                 |
+      | Search                |
+
+  @accessibility
+  Scenario Outline: Design System <component> component controlled page
+    Given I open design systems controlled "<component>" component page
+    When I open Accessibility Tab
+    Then "<component>" component has no violations in Accessibility section
+    Examples:
+      | component |
+      | Drawer    |

@@ -1,8 +1,8 @@
 Feature: Design System Search component
-  I want to test Design System Search component properties
+  I want to test Design System Search component
 
   Background: Open Design System Search component page
-    Given I open default Design System "Search" component docs page
+    Given I open Design Systems default_story "Search" component docs page
 
   @positive
   Scenario: Search input is empty after click on cross icon
@@ -15,7 +15,7 @@ Feature: Design System Search component
     Given Type "Sea" text into search with button input
     When I click on search icon
     Then search icon has golden border
-    
+
   @positive
   Scenario: searchButton property is enabled
     When Type "S" text into search with button input

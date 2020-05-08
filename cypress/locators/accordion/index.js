@@ -17,5 +17,5 @@ export const accordionTitleContainerByPositionNoIFrame = index => cy.get(ACCORDI
   .find(ACCORDION_TITLE_CONTAINER).eq(index).children();
 
 // DS locators
-export const accordionPrimaryTitle = () => cy.iFrame(ACCORDION_PRIMARY_ID)
+export const accordionPrimaryTitleDS = () => cy.iFrame(ACCORDION_PRIMARY_ID)
   .find(ACCORDION_TITLE_CONTAINER);

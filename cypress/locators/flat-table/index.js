@@ -19,8 +19,8 @@ export const flatTableBodyRowByPositionNoiFrame = index => flatTableNoiFrame().f
 // DS locators
 export const flatTableBodyRowByPositionDS = index => cy.iFrame(FLAT_TABLE_STICKY_ROW_ID)
   .find(FLAT_TABLE_COMPONENT).find('tbody tr').eq(index);
-export const flatTableWithStickyHead = () => cy.iFrame(FLAT_TABLE_STICKY_HEADER_ID);
-export const flatTableHeaderCellDS = () => flatTableWithStickyHead()
+export const flatTableWithStickyHeadDS = () => cy.iFrame(FLAT_TABLE_STICKY_HEADER_ID);
+export const flatTableHeaderCellDS = () => flatTableWithStickyHeadDS()
   .find(FLAT_TABLE_COMPONENT).find('thead tr th');
 export const flatTableClickableRowByPositionDS = index => cy.iFrame(FLAT_TABLE_WITH_CLICKABLE_ROWS_ID)
   .find(FLAT_TABLE_COMPONENT).find('tbody tr').eq(index);

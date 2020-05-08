@@ -93,6 +93,5 @@ Then('{string} element inner content is set to {string}', (position, text) => {
 });
 
 Then('{string} element has golden border outline {string}', (position, color) => {
-  cy.wait(500);
   unassignedPicklistItems().eq(positionOfElement(position)).should('have.css', 'outline', color);
 });
